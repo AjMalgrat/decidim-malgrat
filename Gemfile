@@ -11,7 +11,7 @@ gem "decidim", "0.8.3"
 
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"
-
+gem "delayed_job_active_record"
 gem "faker", "~> 1.8.4"
 
 group :development, :test do
