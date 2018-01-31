@@ -2,7 +2,7 @@
 
 Decidim.configure do |config|
   config.application_name = "Decidim Ajuntament de Malgrat de Mar"
-  config.mailer_sender = "no-reply@ajmalgrat.cat"
+  config.mailer_sender = "participacio@ajmalgrat.cat"
 
   # Change these lines to set your preferred locales
   config.default_locale = :ca
