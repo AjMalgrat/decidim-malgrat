@@ -1,0 +1,23 @@
+es:
+  decidim:
+    authorization_handlers:
+      decidim:
+        verifications:
+          authorizations:
+            new:
+              name: Verificación Malgrat de Mar
+            first_login:
+              actions:
+                carpetaciutada_handler: Verificación Malgrat de Mar
+      carpetaciutada_handler:
+        name: Verificación Malgrat de Mar
+        explanation: Verificación de usuario en el censo y mayor de 16 años.
+        age_under_16: No cumple los requisitos de edad igual o superior a 16 años.
+        invalid_person: La verificación no ha podido realizarse correctamente, pongase en contacto con el ayuntamiento a traves del correo participacio@ajmalgrat.cat
+    verifications:
+      authorizations:
+        new:
+          name: Verificación Malgrat de Mar
+        first_login:
+          actions:
+            carpetaciutada_handler: Verificación Malgrat de Mar
