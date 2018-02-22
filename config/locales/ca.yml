@@ -6,6 +6,9 @@ ca:
           authorizations:
             new:
               name: Verificació Malgrat de Mar
+            first_login:
+              actions:
+                carpetaciutada_handler: Verificació Malgrat de Mar
       carpetaciutada_handler:
         name: Verificació Malgrat de Mar
         explanation: Verificació d'usuari en el cens i major de 16 anys.
