@@ -41,6 +41,10 @@ Decidim.configure do |config|
   # take over user accounts.
   #
   config.enable_html_header_snippets = false
+
+  Decidim::Verifications.register_workflow(:carpetaciutada_handler) do |workflow|
+    workflow.form = "CarpetaciutadaHandler"
+  end
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
