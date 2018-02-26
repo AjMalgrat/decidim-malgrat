@@ -12,7 +12,7 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   attribute :document_number, String
 
   validates :date_of_birth, presence: true
-  validates :document_number, format: { with: // }, presence: true
+  validates :document_number, format: { with: /\A\d{8}\w\z/ }, presence: true
 
   validate :over_16
   validate :person_valid
@@ -21,12 +21,15 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   private
   def person_valid
     return nil if response.blank?
-    Rails.logger.debug response.xpath("//HabitantMovientArray")
-    errors.add(:not_in_census, I18n.t("decidim.authorization_handlers.carpetaciutada_handler.invalid_person")) unless response.xpath("//HabitantMovientArray")
+    errors.add(:document_number, I18n.t("decidim.authorization_handlers.carpetaciutada_handler.invalid_person")) unless response.xpath("//descMunicipi").text == "MALGRAT DE MAR"
   end
 
   def sanitized_date_of_birth
     @sanitized_date_of_birth ||= date_of_birth&.strftime("%Y%m%d")
+  end
+
+  def sanitize_document_number
+    document_number.to_i
   end
 
   def over_16
@@ -70,7 +73,7 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
                   <aplicacio>#{Rails.application.secrets.carpetaciutada[:app]}</aplicacio>
                   <nivell>#{Rails.application.secrets.carpetaciutada[:level]}</nivell>
                   <usuari>#{Rails.application.secrets.carpetaciutada[:user]}</usuari>
-                  <nifnum>#{sanitize document_number}</nifnum>
+                  <nifnum>#{sanitize_document_number}</nifnum>
                   <persndataIni>#{sanitized_date_of_birth}</persndataIni>
                   <persndataFi>#{sanitized_date_of_birth}</persndataFi>
                </arg0>
