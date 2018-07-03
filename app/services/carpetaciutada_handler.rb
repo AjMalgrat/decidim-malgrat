@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
+require 'digest/md5'
+
 # Checks the authorization against the census for Malgrat.
-
-require "digest/md5"
-
 class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   include ActionView::Helpers::SanitizeHelper
   include Virtus::Multiparams
@@ -17,15 +16,20 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   validate :over_16
   validate :person_valid
 
-
   private
+
   def person_valid
     return nil if response.blank?
-    errors.add(:document_number, I18n.t("decidim.authorization_handlers.carpetaciutada_handler.invalid_person")) unless response.xpath("//descMunicipi").text == "MALGRAT DE MAR"
+    errors.add(
+      :document_number,
+      I18n.t(
+        'decidim.authorization_handlers.carpetaciutada_handler.invalid_person'
+      )
+    ) unless response.xpath('//unitpobldesc').text == 'MALGRAT DE MAR'
   end
 
   def sanitized_date_of_birth
-    @sanitized_date_of_birth ||= date_of_birth&.strftime("%Y%m%d")
+    @sanitized_date_of_birth ||= date_of_birth&.strftime('%Y%m%d')
   end
 
   def sanitize_document_number
@@ -33,7 +37,10 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   end
 
   def over_16
-    errors.add(:date_of_birth, I18n.t("decidim.authorization_handlers.carpetaciutada_handler.age_under_16")) unless age && age >= 16
+    errors.add(
+      :date_of_birth,
+      I18n.t('decidim.authorization_handlers.carpetaciutada_handler.age_under_16')
+    ) unless age && age >= 16
   end
 
   def age
@@ -54,7 +61,7 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
     return @response if defined?(@response)
 
     response ||= Faraday.post Rails.application.secrets.carpetaciutada[:url] do |request|
-      request.headers["Content-Type"] = "text/xml"
+      request.headers['Content-Type'] = 'text/xml'
       request.body = request_body
     end
 
