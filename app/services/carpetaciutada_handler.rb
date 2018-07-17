@@ -33,7 +33,7 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   end
 
   def sanitize_document_number
-    document_number.to_i
+    document_number[0...-1]
   end
 
   def over_16
