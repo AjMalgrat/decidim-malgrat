@@ -11,7 +11,7 @@ class CarpetaciutadaHandler < Decidim::AuthorizationHandler
   attribute :document_number, String
 
   validates :date_of_birth, presence: true
-  validates :document_number, format: { with: /\A\d{8}\w\z/ }, presence: true
+  validates :document_number, format: { with: /\A\w?\d{7,8}\w\z/ }, presence: true
 
   validate :over_16
   validate :person_valid
