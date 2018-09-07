@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby RUBY_VERSION || '2.4.1'
 
-DECIDIM_VERSION = '0.10.1'.freeze
+DECIDIM_VERSION = '0.13.1'
 
 gem 'decidim', DECIDIM_VERSION
 
@@ -12,7 +12,7 @@ gem 'airbrake', '~> 5.0'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'faker', '~> 1.8.4'
-gem 'puma', '~> 3.0'
+gem 'puma'
 gem 'uglifier', '>= 1.3.0'
 gem 'virtus-multiparams'
 
