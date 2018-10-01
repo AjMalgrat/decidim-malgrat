@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby RUBY_VERSION || '2.4.1'
 
-DECIDIM_VERSION = '0.10.1'.freeze
+DECIDIM_VERSION = '0.14.1'.freeze
 
 gem 'decidim', DECIDIM_VERSION
 
