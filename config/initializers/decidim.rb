@@ -24,6 +24,7 @@ Decidim.configure do |config|
   # Currency unit
   # config.currency_unit = "€"
 
+  config.maximum_attachment_size = 50.megabytes
   # The number of reports which an object can receive before hiding it
   # config.max_reports_before_hiding = 3
 
