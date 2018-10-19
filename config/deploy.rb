@@ -5,6 +5,7 @@ lock "~> 3.11.0"
 set :application, "decidim-malgrat"
 set :repo_url, "https://github.com/AjMalgrat/decidim-malgrat.git"
 
+set :deploy_to, "/home/ruby-data/app"
 
 set :rbenv_type, :user
 set :delayed_job_workers, 1
