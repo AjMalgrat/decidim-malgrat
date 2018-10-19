@@ -10,7 +10,9 @@ require "capistrano/bundler"
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require "capistrano/delayed_job"
-require "capistrano/passenger"
+require "capistrano/puma"
+install_plugin Capistrano::Puma
+
 require "capistrano/rbenv"
 
 require "capistrano/scm/git"
