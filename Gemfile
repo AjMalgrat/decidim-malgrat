@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby RUBY_VERSION || '2.4.1'
+ruby RUBY_VERSION
 
 DECIDIM_VERSION = '0.14.1'.freeze
 
@@ -15,6 +15,7 @@ gem 'faker', '~> 1.8.4'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'virtus-multiparams'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -29,10 +30,10 @@ group :development do
   gem 'web-console'
 
   # deploy
-  gem 'capistrano', '3.8.0', require: false
-  gem 'capistrano-bundler', '~> 1.2', require: false
-  gem 'capistrano-passenger'
-  gem 'capistrano-rails', '1.1.8', require: false
-  gem 'capistrano-rbenv'
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-bundler', '~> 1.3', require: false
+  gem 'capistrano3-puma', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.3', require: false
+  gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano3-delayed-job', '~> 1.0'
 end
