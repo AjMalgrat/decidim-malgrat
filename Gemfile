@@ -15,6 +15,7 @@ gem 'faker', '~> 1.8.4'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'virtus-multiparams'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
