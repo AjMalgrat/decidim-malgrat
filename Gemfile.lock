@@ -201,6 +201,10 @@ GEM
     decidim-comments (0.15.2)
       decidim-core (= 0.15.2)
       jquery-rails (~> 4.0)
+    decidim-consultations (0.15.2)
+      decidim-admin (= 0.15.2)
+      decidim-comments (= 0.15.2)
+      decidim-core (= 0.15.2)
     decidim-core (0.15.2)
       active_link_to (~> 1.0)
       autoprefixer-rails (~> 8.0)
@@ -742,6 +746,7 @@ DEPENDENCIES
   capistrano3-puma (~> 3.1)
   daemons
   decidim (= 0.15.2)
+  decidim-consultations
   decidim-dev (= 0.15.2)
   delayed_job_active_record
   faker (~> 1.8.4)

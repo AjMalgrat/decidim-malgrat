@@ -7,6 +7,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = '0.15.2'
 
 gem 'decidim', DECIDIM_VERSION
+gem 'decidim-consultations'
 
 gem 'airbrake', '~> 5.0'
 gem 'daemons'
