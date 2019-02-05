@@ -7,15 +7,12 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = '0.15.2'
 
 gem 'decidim', DECIDIM_VERSION
-gem 'decidim-consultations'
-gem 'decidim-initiatives'
 
 gem 'airbrake', '~> 5.0'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'faker', '~> 1.8.4'
 gem 'figaro'
-gem 'graphiql-rails', '~> 1.4', '< 1.5'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'virtus-multiparams'
