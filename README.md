@@ -4,9 +4,34 @@ Citizen Participation and Open Government application.
 
 This is the open-source repository for DecidimMalgrat, based on [Decidim](https://github.com/decidim/decidim).
 
-## Deploying the app
+## Installation
 
-An opinionated guide to deploy this app to Heroku can be found at [https://github.com/codegram/decidim-deploy-heroku](https://github.com/codegram/decidim-deploy-heroku).
+### Development
+
+Clone this repository, go to the directory and starts with docker-compose
+
+```bash
+git clone https://github.com/AjMalgrat/decidim-malgrat
+cd decidim-malgrat/
+docker-compose up
+docker-compose run app rails db:create
+docker-compose run app rails db:migrate
+docker-compose run app rails db:seed
+```
+
+Go to http://localhost:3000/
+
+### Staging
+
+```bash
+docker-compose run app bundle exec cap staging deploy
+```
+
+### Production
+
+```bash
+docker-compose run app bundle exec cap production deploy
+```
 
 ## Setting up the application
 
