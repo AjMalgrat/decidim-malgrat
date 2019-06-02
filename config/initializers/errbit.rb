@@ -9,7 +9,7 @@
 # https://github.com/airbrake/airbrake-ruby#configuration
 Airbrake.configure do |c|
   c.project_id = 1
-  c.project_key = ENV['AIRBRAKE_KEY']
+  c.project_key = ENV['AIRBRAKE_KEY'] || "empty"
   c.host = ENV['AIRBRAKE_HOST']
   c.root_directory = Rails.root
   c.logger = Rails.logger

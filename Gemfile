@@ -4,9 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "0.15.2"
-
-gem "decidim", DECIDIM_VERSION
+gem "decidim", git: "https://github.com/decidim/decidim", branch: "0.17-stable"
 gem "decidim-consultations"
 gem "decidim-initiatives"
 
@@ -19,10 +17,11 @@ gem "graphiql-rails", "~> 1.4", "< 1.5"
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"
 gem "virtus-multiparams"
+gem "wicked_pdf"
 
 group :development, :test do
   gem "byebug", platform: :mri
-  gem "decidim-dev", DECIDIM_VERSION
+  gem "decidim-dev"
   gem "rubocop"
 end
 
