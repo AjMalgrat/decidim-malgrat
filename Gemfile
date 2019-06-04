@@ -40,5 +40,5 @@ group :development do
   gem "capistrano3-puma", "~> 3.1"
   gem "capistrano-rails", "~> 1.3", require: false
   gem "capistrano-rbenv", "~> 2.1"
-  gem "capistrano-sidekiq", "1.0"
+  gem "capistrano-sidekiq", "1.0.2"
 end
