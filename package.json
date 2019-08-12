@@ -1,6 +1,6 @@
 {
-  "name": "DecidimMalgrat",
-  "version": "0.17",
+  "name": "decidimmalgrat",
+  "version": "0.18.0",
   "private": true,
   "dependencies": {}
 }
