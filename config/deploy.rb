@@ -11,6 +11,9 @@ set :rbenv_type, :user
 set :delayed_job_workers, 1
 set :rbenv_ruby, '2.5.1'
 
+set :sidekiq_config, "config/sidekiq.yml"
+set :init_system, :systemd
+
 append :linked_files, "config/application.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/uploads"
 
