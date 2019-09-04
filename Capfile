@@ -9,7 +9,7 @@ require "capistrano/deploy"
 require "capistrano/bundler"
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
-require "capistrano/sidekiq"
+require "capistrano/delayed_job"
 require "capistrano/puma"
 install_plugin Capistrano::Puma
 
