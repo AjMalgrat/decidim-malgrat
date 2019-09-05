@@ -20,6 +20,8 @@ gem "uglifier", ">= 1.3.0"
 gem "virtus-multiparams"
 gem "wicked_pdf"
 
+gem "ransack", "2.1.1"
+
 group :development, :test do
   gem "byebug", platform: :mri
   gem "decidim-dev"
