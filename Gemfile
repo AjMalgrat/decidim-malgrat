@@ -6,7 +6,7 @@ ruby RUBY_VERSION
 
 gem "decidim", git: "https://github.com/decidim/decidim", branch: "0.18-stable"
 gem "decidim-consultations"
-gem "decidim-initiatives"
+# gem "decidim-initiatives"
 
 gem "airbrake", "~> 5.0"
 gem "daemons"
