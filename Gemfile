@@ -4,8 +4,8 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", git: "https://github.com/decidim/decidim", branch: "0.19-stable"
-gem "decidim-consultations"
+gem "decidim", "0.21.0"
+gem "decidim-consultations", "0.21.0"
 # gem "decidim-initiatives"
 
 gem "airbrake", "~> 5.0"
@@ -13,7 +13,7 @@ gem "daemons"
 gem "faker", "~> 1.8.4"
 gem "figaro"
 gem "graphiql-rails", "~> 1.4", "< 1.5"
-gem "puma", "~> 3.0"
+gem "puma", ">= 4.3"
 gem "redis-namespace"
 gem "sidekiq", "~> 5.2"
 gem "uglifier", ">= 1.3.0"
@@ -23,8 +23,8 @@ gem "wicked_pdf"
 gem "ransack", "2.1.1"
 
 group :development, :test do
-  gem "byebug", platform: :mri
-  gem "decidim-dev"
+  gem "byebug", "~> 11.0", platform: :mri
+  gem "decidim-dev", "0.21.0"
   gem "rubocop"
 end
 
@@ -39,7 +39,7 @@ group :development do
   # deploy
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-bundler", "~> 1.3", require: false
-  gem "capistrano3-puma", "~> 3.1"
+  gem "capistrano3-puma", "~> 4.0"
   gem "capistrano-rails", "~> 1.3", require: false
   gem "capistrano-rbenv", "~> 2.1"
   gem "capistrano-sidekiq", "1.0.2"
