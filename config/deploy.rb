@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lock "~> 3.11.0"
+lock "~> 3.14.1"
 
 set :application, "decidim-malgrat"
 set :repo_url, "https://github.com/AjMalgrat/decidim-malgrat.git"
