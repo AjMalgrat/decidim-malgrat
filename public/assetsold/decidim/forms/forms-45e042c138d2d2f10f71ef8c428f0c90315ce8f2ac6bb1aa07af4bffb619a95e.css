@@ -1,0 +1,46 @@
+/* line 1, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly {
+  font-weight: bold;
+  font-size: .875rem;
+}
+
+/* line 5, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly p {
+  margin-bottom: .5rem;
+}
+
+/* line 9, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly em {
+  font-weight: normal;
+  font-size: 90%;
+}
+
+/* line 14, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly p + ul {
+  margin-top: -.5rem;
+}
+
+/* line 19, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly-answers {
+  margin-bottom: .5rem;
+}
+
+/* line 22, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly-answers.single_option {
+  list-style-type: disc;
+}
+
+/* line 26, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly-answers.multiple_option {
+  list-style-type: square;
+}
+
+/* line 30, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly-answers.sorting {
+  list-style-type: circle;
+}
+
+/* line 35, ../../.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/decidim-forms-0.21.0/app/assets/stylesheets/decidim/forms/forms.scss */
+.questionnaire-question_readonly-answer {
+  font-weight: normal;
+}

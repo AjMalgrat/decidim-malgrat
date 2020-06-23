@@ -1,0 +1,29 @@
+ca:
+  activemodel:
+    attributes:
+      carpetaciutada_handler:
+        date_of_birth: Data de naixement
+        document_number: Número de document
+  date:
+    formats:
+      default: "%-d/%-m/%Y"
+  decidim:
+    authorization_handlers:
+      decidim:
+        verifications:
+          authorizations:
+            new:
+              name: Verificació
+        first_login:
+          actions:
+            carpetaciutada_handler: Verificació Malgrat de Mar
+      carpetaciutada_handler:
+        age_under_16: No compleix els requisits d'edat igual o superior a 16 anys.
+        explanation: Verificació d'usuari en el cens i major de 16 anys.
+        invalid_person: La verificació no ha pogut realitzar-se correctament, poseu-vos en contacte amb l'ajuntament a través del correu participacio@ajmalgrat.cat
+        name: Verificació Malgrat de Mar
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            carpetaciutada_handler: Verificació Malgrat de Mar

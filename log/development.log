@@ -1,0 +1,174 @@
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1223642147343551040)[0m
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddLockableToUsers (20200612151016)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (80.4ms)[0m  [1m[35mALTER TABLE "decidim_users" ADD "failed_attempts" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "decidim_users" ADD "unlock_token" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "decidim_users" ADD "locked_at" timestamp[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_decidim_users_on_unlock_token" ON "decidim_users"  ("unlock_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151016"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOmniauthSettingsToDecidimOrganization (20200612151017)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "decidim_organizations" ADD "omniauth_settings" jsonb[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151017"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRichTextEditorInPublicViewsToOrganizations (20200612151018)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.3ms)[0m  [1m[35mALTER TABLE "decidim_organizations" ADD "rich_text_editor_in_public_views" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151018"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddWeightToCategories (20200612151019)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.1ms)[0m  [1m[35mALTER TABLE "decidim_categories" ADD "weight" integer DEFAULT 0 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151019"]]
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminTermsOfUseBodyFieldToOrganization (20200612151020)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "decidim_organizations" ADD "admin_terms_of_use_body" jsonb[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151020"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveContinuityBadges (20200612151021)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "decidim_continuity_badge_statuses"[0m
+  [1m[36mRemoveContinuityBadges::BadgeScore Destroy (0.4ms)[0m  [1m[31mDELETE FROM "decidim_gamification_badge_scores" WHERE "decidim_gamification_badge_scores"."badge_name" = $1[0m  [["badge_name", "continuity"]]
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151021"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOrganizationTimezone (20200612151022)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.7ms)[0m  [1m[35mALTER TABLE "decidim_organizations" ADD "time_zone" character varying(255) DEFAULT 'UTC'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151022"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAcceptedAdminTermsAtFieldToUsers (20200612151023)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "decidim_users" ADD "admin_terms_accepted_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151023"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSessionTokenToDecidimFormsAnswers (20200612151024)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.0ms)[0m  [1m[35mALTER TABLE "decidim_forms_answers" ADD "session_token" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE  INDEX  "index_decidim_forms_answers_on_session_token" ON "decidim_forms_answers"  ("session_token")[0m
+  [1m[36mAddSessionTokenToDecidimFormsAnswers::Answer Load (1.2ms)[0m  [1m[34mSELECT  "decidim_forms_answers".* FROM "decidim_forms_answers" ORDER BY "decidim_forms_answers"."id" ASC LIMIT $1[0m  [["LIMIT", 1000]]
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151024"]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIpHashToDecidimFormAnswers (20200612151025)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "decidim_forms_answers" ADD "ip_hash" character varying[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE  INDEX  "index_decidim_forms_answers_on_ip_hash" ON "decidim_forms_answers"  ("ip_hash")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151025"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddScopeTypeToParticipatoryProcesses (20200612151026)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "decidim_participatory_processes" ADD "decidim_scope_type_id" bigint[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX  "index_decidim_participatory_processes_on_decidim_scope_type_id" ON "decidim_participatory_processes"  ("decidim_scope_type_id")[0m
+  [1m[35m (7.9ms)[0m  [1m[35mALTER TABLE "decidim_participatory_processes" ADD CONSTRAINT "fk_rails_4c7666b645"
+FOREIGN KEY ("decidim_scope_type_id")
+  REFERENCES "decidim_scope_types" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151026"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddShowMetricsToParticipatoryProcesses (20200612151027)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (47.3ms)[0m  [1m[35mALTER TABLE "decidim_participatory_processes" ADD "show_metrics" boolean DEFAULT TRUE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151027"]]
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDecidimAssemblyTypes (20200612151028)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "decidim_assemblies_types" ("id" bigserial primary key, "title" jsonb NOT NULL, "decidim_organization_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_decidim_assemblies_types_on_decidim_organization_id" ON "decidim_assemblies_types"  ("decidim_organization_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "decidim_assemblies" ADD "decidim_assemblies_type_id" bigint[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX  "index_decidim_assemblies_on_decidim_assemblies_type_id" ON "decidim_assemblies"  ("decidim_assemblies_type_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "decidim_assemblies" ADD CONSTRAINT "fk_rails_d2635f64dd"
+FOREIGN KEY ("decidim_assemblies_type_id")
+  REFERENCES "decidim_assemblies_types" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151028"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to MigrateDecidimAssemblyTypes (20200612151029)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMigrateDecidimAssemblyTypes::Organization Load (0.6ms)[0m  [1m[34mSELECT  "decidim_organizations".* FROM "decidim_organizations" ORDER BY "decidim_organizations"."id" ASC LIMIT $1[0m  [["LIMIT", 1000]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Load (0.2ms)[0m  [1m[34mSELECT  "decidim_assemblies_types".* FROM "decidim_assemblies_types" WHERE "decidim_assemblies_types"."decidim_organization_id" = $1 AND "decidim_assemblies_types"."title" = $2 LIMIT $3[0m  [["decidim_organization_id", 1], ["title", "{\"ca\":\"Govern\",\"es\":\"Gobierno\"}"], ["LIMIT", 1]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Create (0.3ms)[0m  [1m[32mINSERT INTO "decidim_assemblies_types" ("title", "decidim_organization_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "{\"ca\":\"Govern\",\"es\":\"Gobierno\"}"], ["decidim_organization_id", 1], ["created_at", "2020-06-12 17:50:17.378174"], ["updated_at", "2020-06-12 17:50:17.378174"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.3ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "government"]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Load (0.2ms)[0m  [1m[34mSELECT  "decidim_assemblies_types".* FROM "decidim_assemblies_types" WHERE "decidim_assemblies_types"."decidim_organization_id" = $1 AND "decidim_assemblies_types"."title" = $2 LIMIT $3[0m  [["decidim_organization_id", 1], ["title", "{\"ca\":\"Executiva\",\"es\":\"Ejecutiva\"}"], ["LIMIT", 1]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Create (0.2ms)[0m  [1m[32mINSERT INTO "decidim_assemblies_types" ("title", "decidim_organization_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "{\"ca\":\"Executiva\",\"es\":\"Ejecutiva\"}"], ["decidim_organization_id", 1], ["created_at", "2020-06-12 17:50:17.383505"], ["updated_at", "2020-06-12 17:50:17.383505"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.2ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "executive"]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Load (0.2ms)[0m  [1m[34mSELECT  "decidim_assemblies_types".* FROM "decidim_assemblies_types" WHERE "decidim_assemblies_types"."decidim_organization_id" = $1 AND "decidim_assemblies_types"."title" = $2 LIMIT $3[0m  [["decidim_organization_id", 1], ["title", "{\"ca\":\"Consultiva / Assessora\",\"es\":\"Consultiva / Asesora\"}"], ["LIMIT", 1]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Create (0.2ms)[0m  [1m[32mINSERT INTO "decidim_assemblies_types" ("title", "decidim_organization_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "{\"ca\":\"Consultiva / Assessora\",\"es\":\"Consultiva / Asesora\"}"], ["decidim_organization_id", 1], ["created_at", "2020-06-12 17:50:17.385186"], ["updated_at", "2020-06-12 17:50:17.385186"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.2ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "consultative_advisory"]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Load (0.1ms)[0m  [1m[34mSELECT  "decidim_assemblies_types".* FROM "decidim_assemblies_types" WHERE "decidim_assemblies_types"."decidim_organization_id" = $1 AND "decidim_assemblies_types"."title" = $2 LIMIT $3[0m  [["decidim_organization_id", 1], ["title", "{\"ca\":\"Participativa\",\"es\":\"Participativa\"}"], ["LIMIT", 1]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Create (0.2ms)[0m  [1m[32mINSERT INTO "decidim_assemblies_types" ("title", "decidim_organization_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "{\"ca\":\"Participativa\",\"es\":\"Participativa\"}"], ["decidim_organization_id", 1], ["created_at", "2020-06-12 17:50:17.386799"], ["updated_at", "2020-06-12 17:50:17.386799"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.2ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "participatory"]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Load (0.1ms)[0m  [1m[34mSELECT  "decidim_assemblies_types".* FROM "decidim_assemblies_types" WHERE "decidim_assemblies_types"."decidim_organization_id" = $1 AND "decidim_assemblies_types"."title" = $2 LIMIT $3[0m  [["decidim_organization_id", 1], ["title", "{\"ca\":\"Grup de treball\",\"es\":\"Grupo de trabajo\"}"], ["LIMIT", 1]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Create (0.2ms)[0m  [1m[32mINSERT INTO "decidim_assemblies_types" ("title", "decidim_organization_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "{\"ca\":\"Grup de treball\",\"es\":\"Grupo de trabajo\"}"], ["decidim_organization_id", 1], ["created_at", "2020-06-12 17:50:17.388369"], ["updated_at", "2020-06-12 17:50:17.388369"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.2ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "working_group"]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Load (0.1ms)[0m  [1m[34mSELECT  "decidim_assemblies_types".* FROM "decidim_assemblies_types" WHERE "decidim_assemblies_types"."decidim_organization_id" = $1 AND "decidim_assemblies_types"."title" = $2 LIMIT $3[0m  [["decidim_organization_id", 1], ["title", "{\"ca\":\"Comissió\",\"es\":\"Comisión\"}"], ["LIMIT", 1]]
+  [1m[36mMigrateDecidimAssemblyTypes::AssemblyType Create (0.2ms)[0m  [1m[32mINSERT INTO "decidim_assemblies_types" ("title", "decidim_organization_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "{\"ca\":\"Comissió\",\"es\":\"Comisión\"}"], ["decidim_organization_id", 1], ["created_at", "2020-06-12 17:50:17.389992"], ["updated_at", "2020-06-12 17:50:17.389992"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.2ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "commission"]]
+  [1m[36mMigrateDecidimAssemblyTypes::Assembly Load (0.1ms)[0m  [1m[34mSELECT "decidim_assemblies".* FROM "decidim_assemblies" WHERE "decidim_assemblies"."decidim_organization_id" = $1 AND "decidim_assemblies"."assembly_type" = $2[0m  [["decidim_organization_id", 1], ["assembly_type", "others"]]
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151029"]]
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddProposalValuationAssignments (20200612151030)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "decidim_proposals_valuation_assignments" ("id" bigserial primary key, "decidim_proposal_id" bigint NOT NULL, "valuator_role_type" character varying NOT NULL, "valuator_role_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE  INDEX  "decidim_proposals_valuation_assignment_proposal" ON "decidim_proposals_valuation_assignments"  ("decidim_proposal_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE  INDEX  "decidim_proposals_valuation_assignment_valuator_role" ON "decidim_proposals_valuation_assignments"  ("valuator_role_type", "valuator_role_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151030"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCostsToProposals (20200612151031)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "decidim_proposals_proposals" ADD "cost" decimal[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "decidim_proposals_proposals" ADD "cost_report" jsonb[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "decidim_proposals_proposals" ADD "execution_period" jsonb[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151031"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to SyncProposalsStateWithAmendmentsState (20200612151032)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[33mUPDATE decidim_proposals_proposals AS proposals SET state = amendments.state FROM decidim_amendments AS amendments WHERE proposals.state IS NULL AND amendments.decidim_emendation_type = 'Decidim::Proposals::Proposal' AND amendments.decidim_emendation_id = proposals.id AND amendments.state IS NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151032"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddStatePublishedAtToProposals (20200612151033)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "decidim_proposals_proposals" ADD "state_published_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151033"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to PublishExistingProposalsState (20200612151034)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[33mUPDATE decidim_proposals_proposals SET state_published_at = COALESCE(answered_at, published_at) WHERE state IS NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151034"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserGroupAuthorToBlogs (20200612151035)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "decidim_blogs_posts" ADD "decidim_user_group_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151035"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDecidimConsultationsResponseGroups (20200612151036)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.2ms)[0m  [1m[35mCREATE TABLE "decidim_consultations_response_groups" ("id" bigserial primary key, "title" jsonb, "decidim_consultations_questions_id" bigint, "responses_count" integer DEFAULT 0 NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_2592fb3917"
+FOREIGN KEY ("decidim_consultations_questions_id")
+  REFERENCES "decidim_consultations_questions" ("id")
+)[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE  INDEX  "index_consultations_response_groups_on_consultation_questions" ON "decidim_consultations_response_groups"  ("decidim_consultations_questions_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151036"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddResponseGroupsCountToDecidimConsultationsQuestions (20200612151037)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (41.9ms)[0m  [1m[35mALTER TABLE "decidim_consultations_questions" ADD "response_groups_count" integer DEFAULT 0 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151037"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddResponseGroupsToDecidimConsultationsResponses (20200612151038)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "decidim_consultations_responses" ADD "decidim_consultations_response_group_id" bigint[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_consultations_response_groups_on_consultation_responses" ON "decidim_consultations_responses"  ("decidim_consultations_response_group_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "decidim_consultations_responses" ADD CONSTRAINT "fk_rails_bb3848af45"
+FOREIGN KEY ("decidim_consultations_response_group_id")
+  REFERENCES "decidim_consultations_response_groups" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200612151038"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2020-06-12 17:50:17.604070"], ["key", "environment"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1223642147343551040)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

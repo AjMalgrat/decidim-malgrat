@@ -1,0 +1,26 @@
+en:
+  activemodel:
+    attributes:
+      carpetaciutada_handler:
+        date_of_birth: Date of birth
+        document_number: Document number
+  decidim:
+    authorization_handlers:
+      decidim:
+        verifications:
+          authorizations:
+            new:
+              name: Verification
+        first_login:
+          actions:
+            carpetaciutada_handler: Verification Malgrat de Mar
+      carpetaciutada_handler:
+        age_under_16: Age under 16.
+        explanation: Verification in Malgrat de Mar Census.
+        invalid_person: The DNI do not exist in census
+        name: Verification Malgrat de Mar
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            carpetaciutada_handler: Verification Malgrat de Mar
