@@ -621,7 +621,7 @@ GEM
       activesupport (>= 4.1.0)
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     redis (4.1.4)
     redis-namespace (1.7.0)
       redis (>= 3.0.4)
