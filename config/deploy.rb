@@ -9,7 +9,7 @@ set :deploy_to, "/home/ruby-data/app"
 
 set :rbenv_type, :user
 set :delayed_job_workers, 1
-set :rbenv_ruby, '2.6.3'
+set :rbenv_ruby, '2.7.1'
 
 set :sidekiq_config, "config/sidekiq.yml"
 set :init_system, :systemd
